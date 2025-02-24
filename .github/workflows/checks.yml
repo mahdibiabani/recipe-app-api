@@ -7,6 +7,16 @@ jobs:
   test-lint:
     name: Test and Lint
     runs-on: ubuntu-22.04
+
+    services:
+      postgres:
+        image: postgres:13
+        ports: [5432:5432]
+        env:
+          POSTGRES_USER: devuser
+          POSTGRES_PASSWORD: changeme
+          POSTGRES_DB: devdb
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v2
